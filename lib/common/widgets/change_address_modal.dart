@@ -1,9 +1,8 @@
-import 'package:fashion/common/utils/kcolors.dart';
-import 'package:fashion/common/utils/kstrings.dart';
-import 'package:fashion/common/widgets/app_style.dart';
-import 'package:fashion/common/widgets/reusable_text.dart';
-import 'package:fashion/const/constants.dart';
-import 'package:fashion/src/address/widgtes/checkout_address.dart';
+import 'package:fashion_app/common/utils/kcolors.dart';
+import 'package:fashion_app/common/utils/kstrings.dart';
+import 'package:fashion_app/common/widgets/app_style.dart';
+import 'package:fashion_app/common/widgets/reusable_text.dart';
+import 'package:fashion_app/const/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -18,32 +17,27 @@ Future<dynamic> changeAddressBottomSheet(BuildContext context) {
           padding: const EdgeInsets.symmetric(horizontal: 12),
           physics: const NeverScrollableScrollPhysics(),
           children: [
-            SizedBox(
-              height: 10.h,
-            ),
+            SizedBox(height: 10.h),
             Center(
-                child: ReusableText(
-                    text: AppText.kCheckoutAddress,
-                    style: appStyle(16, Kolors.kPrimary, FontWeight.w500))),
-            SizedBox(
-              height: 10.h,
+              child: ReusableText(
+                text: AppText.kCheckoutAddress,
+                style: appStyle(16, Kolors.kPrimary, FontWeight.w500),
+              ),
             ),
-            Divider(
-              color: Kolors.kGrayLight,
-              thickness: 0.5.h,
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
+            SizedBox(height: 10.h),
+            Divider(color: Kolors.kGrayLight, thickness: 0.5.h),
+            SizedBox(height: 10.h),
             ReusableText(
-                text: AppText.kCheckoutAddressText,
-                style: appStyle(13, Kolors.kGray, FontWeight.w500)),
-            SizedBox(
-              height: 10.h,
+              text: AppText.kCheckoutAddressText,
+              style: appStyle(13, Kolors.kGray, FontWeight.w500),
             ),
-            SizedBox(
-              height: ScreenUtil().screenHeight*0.6,
-              child: const CheckoutAddressSelection())
+            SizedBox(height: 10.h),
+
+            // TODO: Add Address selection
+            // SizedBox(
+            //   height: ScreenUtil().screenHeight * 0.6,
+            //   child: const CheckoutAddressSelection(),
+            // ),
           ],
         ),
       );

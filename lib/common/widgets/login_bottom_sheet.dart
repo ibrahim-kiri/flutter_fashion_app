@@ -1,9 +1,9 @@
-import 'package:fashion/common/utils/kcolors.dart';
-import 'package:fashion/common/utils/kstrings.dart';
-import 'package:fashion/common/widgets/app_style.dart';
-import 'package:fashion/common/widgets/custom_button.dart';
-import 'package:fashion/common/widgets/reusable_text.dart';
-import 'package:fashion/const/constants.dart';
+import 'package:fashion_app/common/utils/kcolors.dart';
+import 'package:fashion_app/common/utils/kstrings.dart';
+import 'package:fashion_app/common/widgets/app_style.dart';
+import 'package:fashion_app/common/widgets/custom_button.dart';
+import 'package:fashion_app/common/widgets/reusable_text.dart';
+import 'package:fashion_app/const/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -18,30 +18,23 @@ Future<dynamic> loginBottomSheet(BuildContext context) {
         child: ListView(
           physics: const NeverScrollableScrollPhysics(),
           children: [
-            SizedBox(
-              height: 10.h,
-            ),
+            SizedBox(height: 10.h),
             Center(
-                child: ReusableText(
-                    text: AppText.kLogin,
-                    style: appStyle(16, Kolors.kPrimary, FontWeight.w500))),
-            SizedBox(
-              height: 10.h,
+              child: ReusableText(
+                text: AppText.kLogin,
+                style: appStyle(16, Kolors.kPrimary, FontWeight.w500),
+              ),
             ),
-            Divider(
-              color: Kolors.kGrayLight,
-              thickness: 0.5.h,
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
+            SizedBox(height: 10.h),
+            Divider(color: Kolors.kGrayLight, thickness: 0.5.h),
+            SizedBox(height: 10.h),
             Center(
-                child: ReusableText(
-                    text: AppText.kLoginText,
-                    style: appStyle(14, Kolors.kGray, FontWeight.w500))),
-            SizedBox(
-              height: 20.h,
+              child: ReusableText(
+                text: AppText.kLoginText,
+                style: appStyle(14, Kolors.kGray, FontWeight.w500),
+              ),
             ),
+            SizedBox(height: 20.h),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: GradientBtn(
@@ -51,9 +44,9 @@ Future<dynamic> loginBottomSheet(BuildContext context) {
                 },
                 btnHieght: 35.h,
                 radius: 16,
-                btnWidth: ScreenUtil().screenWidth ,
+                btnWidth: ScreenUtil().screenWidth,
               ),
-            )
+            ),
           ],
         ),
       );

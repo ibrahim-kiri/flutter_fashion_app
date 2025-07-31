@@ -1,5 +1,5 @@
-import 'package:fashion/common/utils/kcolors.dart';
-import 'package:fashion/common/widgets/app_style.dart';
+import 'package:fashion_app/common/utils/kcolors.dart';
+import 'package:fashion_app/common/widgets/app_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
@@ -22,11 +22,7 @@ Future<dynamic> showHelpCenterBottomSheet(BuildContext context) {
             children: [
               Text(
                 'Fashion App Help Center',
-                style: appStyle(
-                  18.0,
-                  Kolors.kPrimary,
-                  FontWeight.bold,
-                ),
+                style: appStyle(18.0, Kolors.kPrimary, FontWeight.bold),
               ),
               SizedBox(height: 10.h),
 
@@ -74,7 +70,7 @@ Future<dynamic> showHelpCenterBottomSheet(BuildContext context) {
                 'Contact Us:',
                 style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
               ),
-               SizedBox(height: 10.h),
+              SizedBox(height: 10.h),
               const Row(
                 children: [
                   Icon(MaterialCommunityIcons.email_outline),
@@ -91,10 +87,7 @@ Future<dynamic> showHelpCenterBottomSheet(BuildContext context) {
                 children: [
                   Icon(MaterialCommunityIcons.phone_outline),
                   SizedBox(width: 10.0),
-                  Text(
-                    '+860000000000',
-                    style: TextStyle(fontSize: 16.0),
-                  ),
+                  Text('+860000000000', style: TextStyle(fontSize: 16.0)),
                 ],
               ),
 

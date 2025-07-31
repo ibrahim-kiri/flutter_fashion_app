@@ -1,5 +1,5 @@
 import 'package:cross_connectivity/cross_connectivity.dart';
-import 'package:fashion/common/widgets/offline_page.dart';
+import 'package:fashion_app/common/widgets/offline_page.dart';
 import 'package:flutter/material.dart';
 
 class SensitiveContainer extends StatelessWidget {
@@ -9,12 +9,14 @@ class SensitiveContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ConnectivityBuilder(builder: (context, isConnected, status) {
-      if (isConnected == true) {
-        return child;
-      }
+    return ConnectivityBuilder(
+      builder: (context, isConnected, status) {
+        if (isConnected == true) {
+          return child;
+        }
 
-      return const OfflinePage();
-    });
+        return const OfflinePage();
+      },
+    );
   }
 }

@@ -1,27 +1,22 @@
-import 'package:fashion/common/utils/kcolors.dart';
-import 'package:fashion/common/widgets/app_style.dart';
+import 'package:fashion_app/common/utils/kcolors.dart';
+import 'package:fashion_app/common/widgets/app_style.dart';
 import 'package:flutter/cupertino.dart';
 
-void showErrorPopup(BuildContext context, String errorMessage, String? title,
-    bool? removeCancel) {
+void showErrorPopup(
+  BuildContext context,
+  String errorMessage,
+  String? title,
+  bool? removeCancel,
+) {
   showCupertinoModalPopup(
     context: context,
     builder: (BuildContext context) {
       return CupertinoActionSheet(
         title: Text(
           title ?? 'Error',
-          style: appStyle(
-            18.0,
-            Kolors.kGrayLight,
-            FontWeight.bold,
-          ),
+          style: appStyle(18.0, Kolors.kGrayLight, FontWeight.bold),
         ),
-        message: Text(
-          errorMessage,
-          style: const TextStyle(
-            fontSize: 16.0,
-          ),
-        ),
+        message: Text(errorMessage, style: const TextStyle(fontSize: 16.0)),
         actions: <Widget>[
           CupertinoActionSheetAction(
             onPressed: () {
