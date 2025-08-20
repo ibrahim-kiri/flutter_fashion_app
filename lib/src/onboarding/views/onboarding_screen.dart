@@ -44,40 +44,77 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             ],
           ),
 
-          Positioned(
-            bottom: 50.h,
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
-              width: ScreenUtil().screenWidth,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Icon(AntDesign.leftcircleo, color: Kolors.kPrimary, size: 30),
+          context.watch<OnboardingNotifier>().selectedPage == 2
+              ? SizedBox.shrink()
+              : Positioned(
+                  bottom: 50.h,
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 20.w),
+                    width: ScreenUtil().screenWidth,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        context.watch<OnboardingNotifier>().selectedPage == 0
+                            ? const SizedBox(width: 25)
+                            : GestureDetector(
+                                onTap: () {
+                                  _pageController.animateToPage(
+                                    context
+                                            .read<OnboardingNotifier>()
+                                            .selectedPage -
+                                        1,
+                                    duration: const Duration(milliseconds: 200),
+                                    curve: Curves.easeIn,
+                                  );
+                                },
+                                child: const Icon(
+                                  AntDesign.leftcircleo,
+                                  color: Kolors.kPrimary,
+                                  size: 30,
+                                ),
+                              ),
 
-                  SizedBox(
-                    width: ScreenUtil().screenWidth * 0.7,
-                    height: 50.h,
-                    child: PageViewDotIndicator(
-                      currentItem: context
-                          .watch<OnboardingNotifier>()
-                          .selectedPage,
-                      count: 3,
-                      unselectedColor: Colors.black26,
-                      selectedColor: Kolors.kPrimary,
-                      duration: const Duration(milliseconds: 200),
+                        SizedBox(
+                          width: ScreenUtil().screenWidth * 0.7,
+                          height: 50.h,
+                          child: PageViewDotIndicator(
+                            currentItem: context
+                                .watch<OnboardingNotifier>()
+                                .selectedPage,
+                            count: 3,
+                            unselectedColor: Colors.black26,
+                            selectedColor: Kolors.kPrimary,
+                            duration: const Duration(milliseconds: 200),
+                            onItemClicked: (index) {
+                              _pageController.animateToPage(
+                                index,
+                                duration: const Duration(milliseconds: 200),
+                                curve: Curves.easeIn,
+                              );
+                            },
+                          ),
+                        ),
+
+                        GestureDetector(
+                          onTap: () {
+                            _pageController.animateToPage(
+                              context.read<OnboardingNotifier>().selectedPage +
+                                  1,
+                              duration: const Duration(milliseconds: 200),
+                              curve: Curves.easeIn,
+                            );
+                          },
+                          child: const Icon(
+                            AntDesign.rightcircleo,
+                            color: Kolors.kPrimary,
+                            size: 30,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-
-                  Icon(
-                    AntDesign.rightcircleo,
-                    color: Kolors.kPrimary,
-                    size: 30,
-                  ),
-                ],
-              ),
-            ),
-          ),
+                ),
         ],
       ),
     );
