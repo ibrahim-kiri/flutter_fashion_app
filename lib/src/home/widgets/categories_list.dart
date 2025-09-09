@@ -1,8 +1,9 @@
 import 'package:fashion_app/common/utils/kcolors.dart';
 import 'package:fashion_app/common/widgets/app_style.dart';
 import 'package:fashion_app/common/widgets/reusable_text.dart';
-import 'package:fashion_app/const/constants.dart';
+import 'package:fashion_app/common/widgets/shimmers/categories_shimmer.dart';
 import 'package:fashion_app/src/categories/controllers/category_notifier.dart';
+import 'package:fashion_app/src/categories/hooks/fetch_home_categories.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -14,6 +15,15 @@ class HomeCategoriesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final results = fetchHomeCategories();
+    final categories = results.categories;
+    final isLoading = results.isLoading;
+    final error = results.error;
+
+    if (isLoading) {
+      return const CatergoriesShimmer();
+    }
+
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 3.w),
       child: SizedBox(
