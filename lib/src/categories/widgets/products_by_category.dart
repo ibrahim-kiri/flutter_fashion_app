@@ -5,6 +5,7 @@ import 'package:fashion_app/common/widgets/shimmers/list_shimmer.dart';
 import 'package:fashion_app/src/categories/controllers/category_notifier.dart';
 import 'package:fashion_app/src/categories/hooks/fetch_products_by_category.dart';
 import 'package:fashion_app/src/products/widgets/staggered_tile_widget.dart';
+import 'package:fashion_app/src/wishlist/controllers/wishlist_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -47,7 +48,10 @@ class ProductsByCategory extends HookWidget {
                       if (accessToken == null) {
                         loginBottomSheet(context);
                       } else {
-                        // handle wishlist functionality
+                        context.read<WishlistNotifier>().addRemoveWishlist(
+                          product.id,
+                          () {},
+                        );
                       }
                     },
                     product: product,
