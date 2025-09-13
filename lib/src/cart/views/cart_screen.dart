@@ -6,6 +6,7 @@ import 'package:fashion_app/common/widgets/reusable_text.dart';
 import 'package:fashion_app/common/widgets/shimmers/list_shimmer.dart';
 import 'package:fashion_app/src/auth/views/login_screen.dart';
 import 'package:fashion_app/src/cart/hooks/fetch_cart.dart';
+import 'package:fashion_app/src/cart/widgets/cart_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,7 +19,7 @@ class CartPage extends HookWidget {
     String? accessToken = Storage().getString('accessToken');
 
     final results = fetchCart();
-    final cart = results.cart;
+    final carts = results.cart;
     final isLoading = results.isLoading;
     final refetch = results.refetch;
     final error = results.error;
@@ -39,12 +40,10 @@ class CartPage extends HookWidget {
         ),
       ),
       body: ListView(
-        children: List.generate(cart.length, (i) {
-          return Container(
-            width: ScreenUtil().screenWidth,
-            height: 100,
-            color: Kolors.kPrimary,
-          );
+        padding: EdgeInsets.symmetric(horizontal: 12.w),
+        children: List.generate(carts.length, (i) {
+          final cart = carts[i];
+          return CartTile(cart: cart);
         }),
       ),
     );
